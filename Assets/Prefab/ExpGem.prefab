@@ -133,3 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0b9b743ae3b4d4cad9499cacad31ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expAmount: 10
+  magnetRange: 6
+  moveSpeed: 8
