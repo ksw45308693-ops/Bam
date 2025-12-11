@@ -1,21 +1,32 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class ExpGem : MonoBehaviour
 {
-    public int expAmount = 10; // º¸¼® ÇÏ³ª´ç °æÇèÄ¡ ¾ç
+    public int expAmount = 10;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // ÇÃ·¹ÀÌ¾î¿Í ºÎµúÇûÀ» ¶§¸¸ ÀÛµ¿
+        // 1. ë¬´ì—‡ì´ë“  ë‹¿ìœ¼ë©´ ì¼ë‹¨ ì†Œë¦¬ì³!
+        Debug.Log("ğŸ’ ë³´ì„ì— ë¬´ì–¸ê°€ ë‹¿ì•˜ì–´ìš”! ì´ë¦„: " + other.name);
+
         if (other.CompareTag("Player"))
         {
+            Debug.Log("--> í”Œë ˆì´ì–´ í™•ì¸ë¨! ê²½í—˜ì¹˜ ì§€ê¸‰ ì‹œë„");
             PlayerController player = other.GetComponent<PlayerController>();
 
             if (player != null)
             {
-                player.AddExp(expAmount); // ÇÃ·¹ÀÌ¾î¿¡°Ô °æÇèÄ¡ Àü´Ş
-                Destroy(gameObject); // º¸¼®Àº »ç¶óÁü
+                player.AddExp(expAmount);
+                Destroy(gameObject);
             }
+            else
+            {
+                Debug.Log("--> ì˜¤ë¥˜: í”Œë ˆì´ì–´ì—ê²Œ PlayerController ìŠ¤í¬ë¦½íŠ¸ê°€ ì—†ì–´ìš”!");
+            }
+        }
+        else
+        {
+            Debug.Log($"--> í•˜ì§€ë§Œ íƒœê·¸ê°€ Playerê°€ ì•„ë‹ˆì—ìš”. (í˜„ì¬ íƒœê·¸: {other.tag})");
         }
     }
 }
